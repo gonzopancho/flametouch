@@ -35,6 +35,7 @@
 #import "Host.h"
 #import "ServiceType.h"
 #import "AboutViewController.h"
+#import "CustomTableCell.h"
 
 @implementation RootViewController
 
@@ -68,6 +69,8 @@
     [self.tableView setContentOffset:CGPointMake(0, 44)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newServices:) name:@"newServices" object:nil ];
+    
+    [self.tableView setRowHeight:[CustomTableCell height]];
   }
 
 }
@@ -146,6 +149,7 @@
   return 1;
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   FlameTouchAppDelegate *delegate = (FlameTouchAppDelegate *)[[UIApplication sharedApplication] delegate];
   NSInteger result;
@@ -163,9 +167,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FTNameAndDetailsCellIdentifier];
   if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:FTNameAndDetailsCellIdentifier] autorelease];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:16.0];
-    cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
+    // magic cell that looks different on the ipad
+    cell = [[[CustomTableCell alloc] initWithReuseIdentifier:FTNameAndDetailsCellIdentifier] autorelease];
   }
   
   FlameTouchAppDelegate *delegate = (FlameTouchAppDelegate *)[[UIApplication sharedApplication] delegate];

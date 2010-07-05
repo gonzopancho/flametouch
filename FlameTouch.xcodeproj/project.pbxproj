@@ -27,6 +27,7 @@
 		E6613B911017996800EA7A4A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6613B901017996800EA7A4A /* SystemConfiguration.framework */; };
 		E6613BA710179C8100EA7A4A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E6613BA610179C8100EA7A4A /* Reachability.m */; };
 		E6613C9D10183F2800EA7A4A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6613C9C10183F2800EA7A4A /* AboutViewController.m */; };
+		E667F0DC11DE3BED007EBBA6 /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E667F0DB11DE3BED007EBBA6 /* CustomTableCell.m */; };
 		E6761B700EDB15F600E40B14 /* Host.m in Sources */ = {isa = PBXBuildFile; fileRef = E6761B6F0EDB15F600E40B14 /* Host.m */; };
 		E6761BB60EDB1A9A00E40B14 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6761BB50EDB1A9A00E40B14 /* ServiceViewController.m */; };
 		E67D11AA11DBB75500F6234B /* iPad-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = E67D11A811DBB75500F6234B /* iPad-Portrait.png */; };
@@ -79,6 +80,8 @@
 		E6613BA610179C8100EA7A4A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Vendor/Reachability.m; sourceTree = "<group>"; };
 		E6613C9B10183F2800EA7A4A /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		E6613C9C10183F2800EA7A4A /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		E667F0DA11DE3BED007EBBA6 /* CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCell.h; sourceTree = "<group>"; };
+		E667F0DB11DE3BED007EBBA6 /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
 		E6761B6E0EDB15F600E40B14 /* Host.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Host.h; sourceTree = "<group>"; };
 		E6761B6F0EDB15F600E40B14 /* Host.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Host.m; sourceTree = "<group>"; };
 		E6761BB40EDB1A9A00E40B14 /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				E60D15180EDDC2EB0054FB36 /* NSNetService+FlameExtras.m */,
 				E6613C9B10183F2800EA7A4A /* AboutViewController.h */,
 				E6613C9C10183F2800EA7A4A /* AboutViewController.m */,
+				E667F0DA11DE3BED007EBBA6 /* CustomTableCell.h */,
+				E667F0DB11DE3BED007EBBA6 /* CustomTableCell.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 				E6613BA710179C8100EA7A4A /* Reachability.m in Sources */,
 				E6613C9D10183F2800EA7A4A /* AboutViewController.m in Sources */,
 				6CA160131020BCA700ADCEB0 /* ServiceType.m in Sources */,
+				E667F0DC11DE3BED007EBBA6 /* CustomTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +425,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
 		};
