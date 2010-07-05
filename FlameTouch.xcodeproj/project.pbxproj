@@ -19,6 +19,7 @@
 		6CA160131020BCA700ADCEB0 /* ServiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA160121020BCA700ADCEB0 /* ServiceType.m */; };
 		6CCD4F0411DC8020005A08CD /* Icon_57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CCD4F0311DC8020005A08CD /* Icon_57@2x.png */; };
 		6CCD4F0A11DC802F005A08CD /* iPhone-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CCD4F0711DC802F005A08CD /* iPhone-Portrait@2x.png */; };
+		6CCD51FB11DDD7AF005A08CD /* flame_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CCD51FA11DDD7AF005A08CD /* flame_256x256.png */; };
 		6CE234C0103C781200DAE0F3 /* ServiceNames.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CE234BF103C781200DAE0F3 /* ServiceNames.strings */; };
 		6CE235AE103C986600DAE0F3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CE235AC103C986600DAE0F3 /* Localizable.strings */; };
 		6CE235FF103CAD7400DAE0F3 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 6CE235FD103CAD7400DAE0F3 /* about.html */; };
@@ -32,7 +33,6 @@
 		E6761BB60EDB1A9A00E40B14 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6761BB50EDB1A9A00E40B14 /* ServiceViewController.m */; };
 		E67D11AA11DBB75500F6234B /* iPad-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = E67D11A811DBB75500F6234B /* iPad-Portrait.png */; };
 		E67D11AB11DBB75500F6234B /* iPad-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = E67D11A911DBB75500F6234B /* iPad-Landscape.png */; };
-		E67D120811DBC5A500F6234B /* flame_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = E67D120111DBC5A500F6234B /* flame_128x128.png */; };
 		E67D120B11DBC5A500F6234B /* Icon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = E67D120411DBC5A500F6234B /* Icon_29.png */; };
 		E67D120C11DBC5A500F6234B /* Icon_50.png in Resources */ = {isa = PBXBuildFile; fileRef = E67D120511DBC5A500F6234B /* Icon_50.png */; };
 		E67D120D11DBC5A500F6234B /* Icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = E67D120611DBC5A500F6234B /* Icon_57.png */; };
@@ -65,6 +65,8 @@
 		6CA160121020BCA700ADCEB0 /* ServiceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceType.m; sourceTree = "<group>"; };
 		6CCD4F0311DC8020005A08CD /* Icon_57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_57@2x.png"; sourceTree = "<group>"; };
 		6CCD4F0711DC802F005A08CD /* iPhone-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhone-Portrait@2x.png"; path = "Resources-iPhone/iPhone-Portrait@2x.png"; sourceTree = "<group>"; };
+		6CCD51F911DDD7A9005A08CD /* flame.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = flame.psd; sourceTree = "<group>"; };
+		6CCD51FA11DDD7AF005A08CD /* flame_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flame_256x256.png; sourceTree = "<group>"; };
 		6CE234C1103C782400DAE0F3 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ServiceNames.strings; sourceTree = "<group>"; };
 		6CE234C2103C782700DAE0F3 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ServiceNames.strings; sourceTree = "<group>"; };
 		6CE235AD103C986600DAE0F3 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -227,7 +229,9 @@
 			isa = PBXGroup;
 			children = (
 				E67D120111DBC5A500F6234B /* flame_128x128.png */,
+				6CCD51FA11DDD7AF005A08CD /* flame_256x256.png */,
 				E67D120211DBC5A500F6234B /* flame_square.psd */,
+				6CCD51F911DDD7A9005A08CD /* flame.psd */,
 				E67D120311DBC5A500F6234B /* flame_square_512.png */,
 				E67D120411DBC5A500F6234B /* Icon_29.png */,
 				E67D120511DBC5A500F6234B /* Icon_50.png */,
@@ -312,7 +316,7 @@
 				6CCD4F0A11DC802F005A08CD /* iPhone-Portrait@2x.png in Resources */,
 				E67D11AA11DBB75500F6234B /* iPad-Portrait.png in Resources */,
 				E67D11AB11DBB75500F6234B /* iPad-Landscape.png in Resources */,
-				E67D120811DBC5A500F6234B /* flame_128x128.png in Resources */,
+				6CCD51FB11DDD7AF005A08CD /* flame_256x256.png in Resources */,
 				E67D120B11DBC5A500F6234B /* Icon_29.png in Resources */,
 				E67D120C11DBC5A500F6234B /* Icon_50.png in Resources */,
 				E67D120D11DBC5A500F6234B /* Icon_57.png in Resources */,
