@@ -6,8 +6,8 @@
 //  Copyright 2010 jerakeen.org. All rights reserved.
 //
 
-#import "rootSplitViewController.h"
-
+#import "RootSplitViewController.h"
+#import "RootViewController.h"
 
 @implementation RootSplitViewController
 
@@ -17,14 +17,18 @@
 {
   if (self = [super init]) {
     self.leftPane = left;
-    UIViewController* rootView = [[UITableViewController alloc] init];
+    UITableViewController* rootView = [[UITableViewController alloc] init];
     self.rightPane = [[[UINavigationController alloc] initWithRootViewController:rootView] autorelease];
-    NSLog(@"leftPane is a %@", leftPane);
+    [rootView release];
     ((RootViewController*)leftPane.visibleViewController).displayThingy = self;
     self.viewControllers = [NSArray arrayWithObjects:leftPane, rightPane, nil];
-    [self fudgeFrames];
   }
   return self;
+}
+
+-(void)viewDidLoad;
+{
+  [self performSelector:@selector(fudgeFrames) withObject:nil afterDelay:1];
 }
 
 -(void)setViewController:(UIViewController*)vc;
@@ -32,6 +36,7 @@
   UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
   self.rightPane = nc;
   [nc release];
+  //self.view setan
   self.viewControllers = [NSArray arrayWithObjects:leftPane, rightPane, nil];
   [self fudgeFrames];
 }
@@ -42,38 +47,38 @@
 }
 
 // always display left pane, even in portrait mode.
-// based on http://blog.blackwhale.at/2010/04/your-first-ipad-split-view-application/
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration;
 {
+  //[super willAnimateRotationToInterfaceOrientation:interfaceOrientation duration:duration];
   [self fudgeFrames];
 }
 
 - (void)fudgeFrames;
 {
-  
   CGRect frame;
-  UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-  if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
+  if (self.interfaceOrientation == UIDeviceOrientationLandscapeLeft || self.interfaceOrientation == UIDeviceOrientationLandscapeRight) {
+    NSLog(@"Landscape");
     frame = CGRectMake(0,0,1024,768);
   } else {
+    NSLog(@"Portrait");
     frame = CGRectMake(0,0,768,1024);
   }
 
   //adjust master view
-  CGRect f = leftPane.view.frame;
-  f.size.width = 320;
-  f.size.height = frame.size.height;
-  f.origin.x = 0;
-  f.origin.y = 0;
-  [leftPane.view setFrame:f];
+  CGRect leftFrame = leftPane.view.frame;
+  leftFrame.size.width = 320;
+  leftFrame.size.height = frame.size.height;
+  leftFrame.origin.x = 0;
+  leftFrame.origin.y = 0;
+  [leftPane.view setFrame:leftFrame];
   
   //adjust detail view
-  f = rightPane.view.frame;
-  f.size.width = frame.size.width - 320;
-  f.size.height = frame.size.height;
-  f.origin.x = 320;
-  f.origin.y = 0;
-  [rightPane.view setFrame:f];
+  CGRect rightFrame = rightPane.view.frame;
+  rightFrame.size.width = frame.size.width - 320;
+  rightFrame.size.height = frame.size.height;
+  rightFrame.origin.x = 320;
+  rightFrame.origin.y = 0;
+  [rightPane.view setFrame:rightFrame];
 }
 
 

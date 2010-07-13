@@ -30,16 +30,17 @@
 */
 
 #import <UIKit/UIKit.h>
+#import "RootSplitViewController.h"
 
 @interface RootViewController : UITableViewController <UISearchBarDelegate> {
-  NSArray * filteredHosts;
-  NSArray * filteredServiceTypes;
-  id displayThingy;
+  NSArray* filteredHosts;
+  NSArray* filteredServiceTypes;
+  RootSplitViewController* displayThingy;
 }
 
-@property (retain) NSArray * filteredHosts;
-@property (retain) NSArray * filteredServiceTypes;
-@property (retain) id displayThingy;
+@property (nonatomic,retain) NSArray* filteredHosts;
+@property (nonatomic,retain) NSArray* filteredServiceTypes;
+@property (nonatomic,retain) RootSplitViewController* displayThingy;
 
 - (void) runFilter;
 

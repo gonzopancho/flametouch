@@ -7,20 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RootViewController.h"
 
-@interface RootSplitViewController : UISplitViewController {
-  
+@interface RootSplitViewController : UISplitViewController {  
   UINavigationController *leftPane;
   UIViewController *rightPane;
-
 }
 
 @property (nonatomic, retain) UINavigationController *leftPane;
 @property (nonatomic, retain) UIViewController *rightPane;
 
-
--(id)initWithLeftPane:(UIViewController*)leftPane;
-- (void)fudgeFrames;
+-(id)initWithLeftPane:(UINavigationController*)left;
+-(void)fudgeFrames;
+-(void)setViewController:(UIViewController*)vc;
 
 @end
