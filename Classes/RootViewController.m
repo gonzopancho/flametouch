@@ -76,9 +76,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newServices:) name:@"newServices" object:nil ];
     
     [self.tableView setRowHeight:[CustomTableCell height]];
+    
+    // this has to be here and not in the custom cell because I need to set the
+    // background colour even for bits of the table without cells.
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
       self.tableView.separatorColor = [UIColor lightGrayColor];
-      self.tableView.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
+      self.tableView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:1];
     }
   }
 
@@ -196,6 +199,13 @@
 		cell.detailTextLabel.text = [serviceType details];
 	}
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+  // iPad left-column needs a white accessory arrow so it shows up
+  // against the background.
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    UIImage *image = [UIImage imageNamed:@"white_arrow.png"];
+    cell.accessoryView = [[UIImageView alloc] initWithImage:image];
+  }
   return cell;
 }
 

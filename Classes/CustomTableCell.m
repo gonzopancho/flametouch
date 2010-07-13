@@ -41,15 +41,17 @@ static CGFloat XPADDING = 10;
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
   
     self.textLabel.frame = CGRectMake(XPADDING, 5, self.frame.size.width - 100, LABELHEIGHT);
+    self.textLabel.textColor = [UIColor whiteColor];
 
     //self.textLabel.font = [UIFont systemFontOfSize:14]; //  fontWithName:@"Palatino" size:16];
 
     self.detailTextLabel.frame = CGRectMake(XPADDING, (HEIGHT / 2) + 1, self.frame.size.width - 20, LABELHEIGHT);
+    self.detailTextLabel.textColor = [UIColor lightGrayColor];
 
     //self.detailTextLabel.font = [UIFont systemFontOfSize:12]; // [UIFont fontWithName:@"Palatino" size:12];
     
     //self.backgroundColor = [UIColor lightGrayColor];
-    
+
   }
 }
 
