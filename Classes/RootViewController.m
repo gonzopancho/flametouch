@@ -47,13 +47,6 @@
 
   if (self) {
     self.displayThingy = nil;
-    
-    UIButton * myAboutButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    myAboutButton.frame = CGRectMake(0.0,0.0,20.0,20.0);
-    [myAboutButton addTarget:self action:@selector(showAboutPane) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem * aboutButton = [[[UIBarButtonItem alloc] initWithCustomView:myAboutButton] autorelease];
-    [myAboutButton setTitle:NSLocalizedString(@"About Flame", @"Label for About Button (not visible on screen, but used for Accessibility)") forState:0];
-    self.navigationItem.leftBarButtonItem = aboutButton;
 
     NSArray * segmentedControlItems = [NSArray arrayWithObjects:NSLocalizedString(@"Hosts", @"Title of Segmented Control item for selecting the Hosts list"), NSLocalizedString(@"Services", @"Title of Segmented Control item for selecting the Service list"), nil];
     UISegmentedControl * segmentedControl = [[[UISegmentedControl alloc] initWithItems:segmentedControlItems] autorelease];
@@ -63,9 +56,16 @@
     self.navigationItem.titleView = segmentedControl;
 
     UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshList)] autorelease];
-    self.navigationItem.rightBarButtonItem = refreshButton;
+    self.navigationItem.leftBarButtonItem = refreshButton;
     
-
+    UIButton * myAboutButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    myAboutButton.frame = CGRectMake(0.0,0.0,20.0,20.0);
+    [myAboutButton addTarget:self action:@selector(showAboutPane) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * aboutButton = [[[UIBarButtonItem alloc] initWithCustomView:myAboutButton] autorelease];
+    [myAboutButton setTitle:NSLocalizedString(@"About Flame", @"Label for About Button (not visible on screen, but used for Accessibility)") forState:0];
+    self.navigationItem.rightBarButtonItem = aboutButton;
+    
+    
     CGRect searchBarRect = CGRectMake(0, 0, 100, 44);
     UISearchBar * searchBar = [[[UISearchBar alloc] initWithFrame:searchBarRect] autorelease];
     searchBar.delegate = self;
@@ -87,6 +87,21 @@
 
 }
 
+-(void)setDisplayThingy:(RootSplitViewController*)newController;
+{
+  NSLog(@"setter");
+  if (newController != displayThingy) {
+    [displayThingy release];
+    displayThingy = [newController retain];
+  }
+
+  // if we're setting a nav controller, and we still have our 'about'
+  // button, give it to the splitViewController.
+  if (newController && self.navigationItem.rightBarButtonItem) {
+    newController.rightBarButtonItem = self.navigationItem.rightBarButtonItem;
+    self.navigationItem.rightBarButtonItem = nil;
+  }
+}
 
 
 /*

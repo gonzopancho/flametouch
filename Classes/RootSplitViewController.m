@@ -11,7 +11,7 @@
 
 @implementation RootSplitViewController
 
-@synthesize leftPane, rightPane;
+@synthesize leftPane, rightPane, rightBarButtonItem;
 
 -(id)initWithLeftPane:(UINavigationController*)left;
 {
@@ -33,10 +33,13 @@
 
 -(void)setViewController:(UIViewController*)vc;
 {
+  // Steal the right button from the main navigation controller.
+  vc.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
+
   UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
   self.rightPane = nc;
   [nc release];
-  //self.view setan
+
   self.viewControllers = [NSArray arrayWithObjects:leftPane, rightPane, nil];
   [self fudgeFrames];
 }

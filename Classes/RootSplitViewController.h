@@ -11,10 +11,12 @@
 @interface RootSplitViewController : UISplitViewController {  
   UINavigationController *leftPane;
   UIViewController *rightPane;
+  UIBarButtonItem *rightBarButtonItem;
 }
 
 @property (nonatomic, retain) UINavigationController *leftPane;
 @property (nonatomic, retain) UIViewController *rightPane;
+@property (nonatomic, retain) UIBarButtonItem *rightBarButtonItem;
 
 -(id)initWithLeftPane:(UINavigationController*)left;
 -(void)fudgeFrames;
