@@ -63,6 +63,12 @@
   return YES; 
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration;
+{
+  [super willAnimateRotationToInterfaceOrientation:interfaceOrientation duration:duration];
+  theWebView.frame = self.view.bounds;
+}
+  
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
