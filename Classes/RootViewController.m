@@ -48,15 +48,12 @@
   if (self) {
     self.displayThingy = nil;
     
-    UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshList)] autorelease];
-    self.navigationItem.leftBarButtonItem = refreshButton;
-
     UIButton * myAboutButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
     myAboutButton.frame = CGRectMake(0.0,0.0,20.0,20.0);
     [myAboutButton addTarget:self action:@selector(showAboutPane) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * aboutButton = [[[UIBarButtonItem alloc] initWithCustomView:myAboutButton] autorelease];
     [myAboutButton setTitle:NSLocalizedString(@"About Flame", @"Label for About Button (not visible on screen, but used for Accessibility)") forState:0];
-    self.navigationItem.rightBarButtonItem = aboutButton;
+    self.navigationItem.leftBarButtonItem = aboutButton;
 
     NSArray * segmentedControlItems = [NSArray arrayWithObjects:NSLocalizedString(@"Hosts", @"Title of Segmented Control item for selecting the Hosts list"), NSLocalizedString(@"Services", @"Title of Segmented Control item for selecting the Service list"), nil];
     UISegmentedControl * segmentedControl = [[[UISegmentedControl alloc] initWithItems:segmentedControlItems] autorelease];
@@ -64,6 +61,10 @@
     segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     segmentedControl.selectedSegmentIndex = ((FlameTouchAppDelegate*)[[UIApplication sharedApplication] delegate]).displayMode;
     self.navigationItem.titleView = segmentedControl;
+
+    UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshList)] autorelease];
+    self.navigationItem.rightBarButtonItem = refreshButton;
+    
 
     CGRect searchBarRect = CGRectMake(0, 0, 100, 44);
     UISearchBar * searchBar = [[[UISearchBar alloc] initWithFrame:searchBarRect] autorelease];
@@ -75,6 +76,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newServices:) name:@"newServices" object:nil ];
     
     [self.tableView setRowHeight:[CustomTableCell height]];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+      self.tableView.separatorColor = [UIColor lightGrayColor];
+      self.tableView.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
+    }
   }
 
 }
@@ -224,12 +229,9 @@
 
 #pragma mark UISearchBarDelegate
 
-
 - (void) searchBar: (UISearchBar *) searchBar textDidChange: (NSString *) searchText {
   [self runFilter];
 }
-
-
 
 - (void) searchBarCancelButtonClicked: (UISearchBar *) searchBar {
   ((UISearchBar*)self.tableView.tableHeaderView).text = @"";
