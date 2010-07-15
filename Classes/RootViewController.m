@@ -39,8 +39,7 @@
 
 @implementation RootViewController
 
-@synthesize displayThingy;
-
+@synthesize displayThingy, white_arrow;
 
 - (void) awakeFromNib {
   self = [super initWithStyle:UITableViewStylePlain];
@@ -82,6 +81,7 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
       self.tableView.separatorColor = [UIColor lightGrayColor];
       self.tableView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:1];
+      self.white_arrow = [UIImage imageNamed:@"white_arrow.png"];
     }
   }
 
@@ -218,8 +218,7 @@
   // iPad left-column needs a white accessory arrow so it shows up
   // against the background.
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-    UIImage *image = [UIImage imageNamed:@"white_arrow.png"];
-    cell.accessoryView = [[UIImageView alloc] initWithImage:image];
+    cell.accessoryView = [[[UIImageView alloc] initWithImage:white_arrow] autorelease];
   }
   return cell;
 }

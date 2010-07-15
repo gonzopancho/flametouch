@@ -36,11 +36,13 @@
   NSArray* filteredHosts;
   NSArray* filteredServiceTypes;
   RootSplitViewController* displayThingy;
+  UIImage *white_arrow;
 }
 
 @property (nonatomic,retain) NSArray* filteredHosts;
 @property (nonatomic,retain) NSArray* filteredServiceTypes;
 @property (nonatomic,retain) RootSplitViewController* displayThingy;
+@property (nonatomic,retain) UIImage *white_arrow;
 
 - (void) runFilter;
 
