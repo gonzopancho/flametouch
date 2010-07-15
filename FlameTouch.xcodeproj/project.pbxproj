@@ -28,6 +28,8 @@
 		E6613B911017996800EA7A4A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6613B901017996800EA7A4A /* SystemConfiguration.framework */; };
 		E6613BA710179C8100EA7A4A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E6613BA610179C8100EA7A4A /* Reachability.m */; };
 		E6613C9D10183F2800EA7A4A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6613C9C10183F2800EA7A4A /* AboutViewController.m */; };
+		E663F22A11EFB19500D78B5A /* TVNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E663F22911EFB19500D78B5A /* TVNavigationController.m */; };
+		E663F28611EFBA9A00D78B5A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E663F28511EFBA9A00D78B5A /* QuartzCore.framework */; };
 		E667F0DC11DE3BED007EBBA6 /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E667F0DB11DE3BED007EBBA6 /* CustomTableCell.m */; };
 		E6761B700EDB15F600E40B14 /* Host.m in Sources */ = {isa = PBXBuildFile; fileRef = E6761B6F0EDB15F600E40B14 /* Host.m */; };
 		E6761BB60EDB1A9A00E40B14 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6761BB50EDB1A9A00E40B14 /* ServiceViewController.m */; };
@@ -84,6 +86,9 @@
 		E6613BA610179C8100EA7A4A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Vendor/Reachability.m; sourceTree = "<group>"; };
 		E6613C9B10183F2800EA7A4A /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		E6613C9C10183F2800EA7A4A /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		E663F22811EFB19500D78B5A /* TVNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TVNavigationController.h; path = 3rdParty/TVNavigationController.h; sourceTree = "<group>"; };
+		E663F22911EFB19500D78B5A /* TVNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TVNavigationController.m; path = 3rdParty/TVNavigationController.m; sourceTree = "<group>"; };
+		E663F28511EFBA9A00D78B5A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E667F0DA11DE3BED007EBBA6 /* CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCell.h; sourceTree = "<group>"; };
 		E667F0DB11DE3BED007EBBA6 /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
 		E6761B6E0EDB15F600E40B14 /* Host.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Host.h; sourceTree = "<group>"; };
@@ -119,6 +124,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				E6613B911017996800EA7A4A /* SystemConfiguration.framework in Frameworks */,
+				E663F28611EFBA9A00D78B5A /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +171,7 @@
 			children = (
 				6C0DA533111AD7CB0087122A /* Ideas */,
 				080E96DDFE201D6D7F000001 /* Classes */,
+				E663F23411EFB1AC00D78B5A /* 3rdParty */,
 				E6613B9910179C4C00EA7A4A /* Vendor */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources Common */,
@@ -209,6 +216,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				E663F28511EFBA9A00D78B5A /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -220,6 +228,15 @@
 				E6613BA610179C8100EA7A4A /* Reachability.m */,
 			);
 			name = Vendor;
+			sourceTree = "<group>";
+		};
+		E663F23411EFB1AC00D78B5A /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				E663F22811EFB19500D78B5A /* TVNavigationController.h */,
+				E663F22911EFB19500D78B5A /* TVNavigationController.m */,
+			);
+			name = 3rdParty;
 			sourceTree = "<group>";
 		};
 		E67D11DB11DBC32800F6234B /* Resources-iPhone */ = {
@@ -353,6 +370,7 @@
 				6CA160131020BCA700ADCEB0 /* ServiceType.m in Sources */,
 				E667F0DC11DE3BED007EBBA6 /* CustomTableCell.m in Sources */,
 				E6D94F9911E2620000095982 /* RootSplitViewController.m in Sources */,
+				E663F22A11EFB19500D78B5A /* TVNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

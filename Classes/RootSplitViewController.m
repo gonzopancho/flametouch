@@ -6,8 +6,11 @@
 //  Copyright 2010 jerakeen.org. All rights reserved.
 //
 
+#import "QuartzCore/CAAnimation.h"
+
 #import "RootSplitViewController.h"
 #import "RootViewController.h"
+#import "TVNavigationController.h"
 
 @implementation RootSplitViewController
 
@@ -28,8 +31,11 @@
   NSLog(@"viewDidLoad");
   ((RootViewController*)leftPane.visibleViewController).displayThingy = self;
 
-  self.rightPane = [[[UINavigationController alloc] initWithRootViewController:self.defaultView] autorelease];
+  self.rightPane = [[[TVNavigationController alloc] initWithRootViewController:self.defaultView] autorelease];
   self.viewControllers = [NSArray arrayWithObjects:leftPane, rightPane, nil];
+
+  // force the view background to white, so the fades look better.
+  rightPane.view.backgroundColor = [UIColor whiteColor];
 
   [self performSelector:@selector(fudgeFrames) withObject:nil afterDelay:1];
 }
@@ -39,9 +45,12 @@
   // Steal the right button from the main navigation controller.
   vc.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
 
-  self.rightPane = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
-
-  self.viewControllers = [NSArray arrayWithObjects:leftPane, rightPane, nil];
+  CATransition *transition = [CATransition animation];
+  transition.duration = 0.2;
+  transition.type = kCATransitionFade;
+  [self.rightPane.view.layer addAnimation:transition forKey:nil];
+  
+  [self.rightPane setRootViewController:vc];
   [self fudgeFrames];
 }
 
@@ -63,10 +72,8 @@
 {
   CGRect frame;
   if (self.interfaceOrientation == UIDeviceOrientationLandscapeLeft || self.interfaceOrientation == UIDeviceOrientationLandscapeRight) {
-    NSLog(@"Landscape");
     frame = CGRectMake(0,0,1024,768);
   } else {
-    NSLog(@"Portrait");
     frame = CGRectMake(0,0,768,1024);
   }
 
@@ -106,6 +113,8 @@
 
 
 - (void)dealloc {
+  self.leftPane = nil;
+  self.rightPane = nil;
   [super dealloc];
 }
 

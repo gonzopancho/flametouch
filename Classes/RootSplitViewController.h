@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import "TVNavigationController.h"
+
 @interface RootSplitViewController : UISplitViewController {  
   UINavigationController *leftPane;
-  UIViewController *rightPane;
+  TVNavigationController *rightPane;
   UIBarButtonItem *rightBarButtonItem;
   UIViewController *defaultView;
 }
 
 @property (nonatomic, retain) UINavigationController *leftPane;
-@property (nonatomic, retain) UIViewController *rightPane;
+@property (nonatomic, retain) TVNavigationController *rightPane;
 @property (nonatomic, retain) UIBarButtonItem *rightBarButtonItem;
 @property (nonatomic, retain) UIViewController *defaultView;
 
