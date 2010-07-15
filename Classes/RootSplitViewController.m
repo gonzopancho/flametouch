@@ -11,23 +11,26 @@
 
 @implementation RootSplitViewController
 
-@synthesize leftPane, rightPane, rightBarButtonItem;
+@synthesize defaultView, leftPane, rightPane, rightBarButtonItem;
 
--(id)initWithLeftPane:(UINavigationController*)left;
+-(id)initWithLeftPane:(UINavigationController*)left defaultView:(UIViewController*)def;
 {
+  NSLog(@"initWithLeftPane: %@", left);
   if (self = [super init]) {
     self.leftPane = left;
-    UITableViewController* rootView = [[UITableViewController alloc] init];
-    self.rightPane = [[[UINavigationController alloc] initWithRootViewController:rootView] autorelease];
-    [rootView release];
-    ((RootViewController*)leftPane.visibleViewController).displayThingy = self;
-    self.viewControllers = [NSArray arrayWithObjects:leftPane, rightPane, nil];
+    self.defaultView = def;
   }
   return self;
 }
 
 -(void)viewDidLoad;
 {
+  NSLog(@"viewDidLoad");
+  ((RootViewController*)leftPane.visibleViewController).displayThingy = self;
+
+  self.rightPane = [[[UINavigationController alloc] initWithRootViewController:self.defaultView] autorelease];
+  self.viewControllers = [NSArray arrayWithObjects:leftPane, rightPane, nil];
+
   [self performSelector:@selector(fudgeFrames) withObject:nil afterDelay:1];
 }
 
@@ -36,15 +39,14 @@
   // Steal the right button from the main navigation controller.
   vc.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
 
-  UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
-  self.rightPane = nc;
-  [nc release];
+  self.rightPane = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
 
   self.viewControllers = [NSArray arrayWithObjects:leftPane, rightPane, nil];
   [self fudgeFrames];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
+{
   // Overriden to allow any orientation.
   return YES;
 }
@@ -52,6 +54,7 @@
 // always display left pane, even in portrait mode.
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration;
 {
+  // explicitly don't let the automatic frame rearranger do anything.
   //[super willAnimateRotationToInterfaceOrientation:interfaceOrientation duration:duration];
   [self fudgeFrames];
 }
@@ -86,10 +89,12 @@
 
 
 - (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+  NSLog(@"memory warning");
+  // Releases the view if it doesn't have a superview.
+  [super didReceiveMemoryWarning];
     
-    // Release any cached data, images, etc that aren't in use.
+  // Release any cached data, images, etc that aren't in use.
+  [rightPane release];
 }
 
 
@@ -101,7 +106,7 @@
 
 
 - (void)dealloc {
-    [super dealloc];
+  [super dealloc];
 }
 
 

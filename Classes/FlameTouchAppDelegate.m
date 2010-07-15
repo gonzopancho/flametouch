@@ -37,7 +37,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include "RootSplitViewController.h"
-
+#include "AboutViewController.h"
 
 @implementation FlameTouchAppDelegate
 
@@ -60,7 +60,7 @@
   // Configure and show the window
   
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-    RootSplitViewController* split = [[RootSplitViewController alloc] initWithLeftPane:navigationController];
+    RootSplitViewController* split = [[RootSplitViewController alloc] initWithLeftPane:navigationController defaultView:[[[AboutViewController alloc] init] autorelease]];
     [window addSubview:split.view];
   } else {
     [window addSubview:[navigationController view]];

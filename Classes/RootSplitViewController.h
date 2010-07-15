@@ -12,13 +12,15 @@
   UINavigationController *leftPane;
   UIViewController *rightPane;
   UIBarButtonItem *rightBarButtonItem;
+  UIViewController *defaultView;
 }
 
 @property (nonatomic, retain) UINavigationController *leftPane;
 @property (nonatomic, retain) UIViewController *rightPane;
 @property (nonatomic, retain) UIBarButtonItem *rightBarButtonItem;
+@property (nonatomic, retain) UIViewController *defaultView;
 
--(id)initWithLeftPane:(UINavigationController*)left;
+-(id)initWithLeftPane:(UINavigationController*)left defaultView:(UIViewController*)def;
 -(void)fudgeFrames;
 -(void)setViewController:(UIViewController*)vc;
 
