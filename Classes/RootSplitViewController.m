@@ -43,13 +43,16 @@
 -(void)setViewController:(UIViewController*)vc;
 {
   // Steal the right button from the main navigation controller.
+  // TODO - only do this once, when rightBarButtonItem is set.
   vc.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
 
+  // rather than snapping between the views, fade it nicely. LOOKS SO AWESOME.
   CATransition *transition = [CATransition animation];
-  transition.duration = 0.2;
+  transition.duration = 0.25; // any slower than this and it's boring - any faster and it feels stuttery
   transition.type = kCATransitionFade;
   [self.rightPane.view.layer addAnimation:transition forKey:nil];
   
+  // setRootViewController is a method added by the TVNavigationController class, and is why I use it.
   [self.rightPane setRootViewController:vc];
   [self fudgeFrames];
 }
@@ -115,6 +118,8 @@
 - (void)dealloc {
   self.leftPane = nil;
   self.rightPane = nil;
+  self.rightBarButtonItem = nil;
+  self.defaultView = nil;
   [super dealloc];
 }
 

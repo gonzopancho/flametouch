@@ -29,6 +29,8 @@
   for support.
 */
 
+#import "QuartzCore/CAAnimation.h"
+
 #import "RootViewController.h"
 #import "ServiceViewController.h"
 #import "FlameTouchAppDelegate.h"
@@ -111,6 +113,12 @@
 -(void) changeDisplayMode:(id) sender {
   NSInteger selection = [(UISegmentedControl*) sender selectedSegmentIndex];
 
+  // rather than snapping between the views, fade it nicely. LOOKS SO AWESOME.
+  CATransition *transition = [CATransition animation];
+  transition.duration = 0.25; // any slower than this and it's boring - any faster and it feels stuttery
+  transition.type = kCATransitionFade;
+  [self.view.layer addAnimation:transition forKey:nil];
+  
   ((FlameTouchAppDelegate *)[[UIApplication sharedApplication] delegate]).displayMode = selection;
 
 	if (selection == SHOWSERVERS) {
