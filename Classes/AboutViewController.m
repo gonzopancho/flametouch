@@ -29,9 +29,9 @@
 
 @implementation AboutViewController
 
--(id)init {
-  self = [super init];
-  if (!self) return nil;
+-(void)viewDidLoad;
+{
+  NSLog(@"loadView");
   self.title = NSLocalizedString(@"Flame for iPhone", @"Full application name");
 
   theWebView = [[UIWebView alloc] initWithFrame:self.view.bounds];
@@ -46,8 +46,6 @@
   [htmlString replaceOccurrencesOfString:@"#{VERSION}" withString:version options:0 range:NSMakeRange(0, [htmlString length])];
   
   [theWebView loadHTMLString: htmlString baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
-  
-  return self;
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -65,6 +63,7 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration;
 {
+  NSLog(@"will animate");
   [super willAnimateRotationToInterfaceOrientation:interfaceOrientation duration:duration];
   theWebView.frame = self.view.bounds;
 }
@@ -73,6 +72,8 @@
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
   // Release anything that's not essential, such as cached data
+  [theWebView setDelegate:nil];
+  [theWebView release];
 }
 
 
