@@ -86,7 +86,7 @@
   leftFrame.size.height = frame.size.height;
   leftFrame.origin.x = 0;
   leftFrame.origin.y = 0;
-  [leftPane.view setFrame:leftFrame];
+  leftPane.view.frame = leftFrame;
   
   //adjust detail view
   CGRect rightFrame = rightPane.view.frame;
@@ -94,7 +94,7 @@
   rightFrame.size.height = frame.size.height;
   rightFrame.origin.x = 320;
   rightFrame.origin.y = 0;
-  [rightPane.view setFrame:rightFrame];
+  rightPane.view.frame = rightFrame;
 }
 
 
