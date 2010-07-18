@@ -82,6 +82,7 @@
 
 
 - (void)dealloc {
+  [self removeObserver:self forKeyPath:@"view.frame"];
   [theWebView setDelegate:nil];
   [theWebView release];
   [super dealloc];
