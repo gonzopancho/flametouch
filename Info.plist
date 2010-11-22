@@ -24,9 +24,9 @@
 	<key>UILaunchImageFile~ipad</key>
 	<string>iPad</string>
 	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>Flame</string>
 	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
+	<string>Flame</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.jerakeen.flametouch</string>
 	<key>CFBundleInfoDictionaryVersion</key>
