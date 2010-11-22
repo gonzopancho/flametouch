@@ -42,7 +42,6 @@
 		E6AAAFCE0FF521BF0042220A /* ServiceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AAAFCD0FF521BF0042220A /* ServiceDetailViewController.m */; };
 		E6AC9312117734D900E60301 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6AC9311117734D900E60301 /* MainWindow-iPad.xib */; };
 		E6B2622E11ECF2AD003FBE36 /* white_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E6B2622D11ECF2AD003FBE36 /* white_arrow.png */; };
-		E6BBD9B60FF4DAB400077E5E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6BBD9B50FF4DAB400077E5E /* Entitlements.plist */; };
 		E6C626191068D21D00847E99 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E6C626181068D21D00847E99 /* LICENSE */; };
 		E6D94F9911E2620000095982 /* RootSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D94F9811E2620000095982 /* RootSplitViewController.m */; };
 /* End PBXBuildFile section */
@@ -330,7 +329,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C9CB34C103DBE9400D2FDEA /* MainWindow.xib in Resources */,
-				E6BBD9B60FF4DAB400077E5E /* Entitlements.plist in Resources */,
 				6CE234C0103C781200DAE0F3 /* ServiceNames.strings in Resources */,
 				6CE235AE103C986600DAE0F3 /* Localizable.strings in Resources */,
 				6CE235FF103CAD7400DAE0F3 /* about.html in Resources */,
@@ -414,8 +412,7 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				PROVISIONING_PROFILE = "";
+				INFOPLIST_FILE = Info.plist;
 			};
 			name = Debug;
 		};
@@ -429,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -436,6 +434,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = Flame;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
