@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Flame</string>
+	<key>CFBundleExecutable</key>
+	<string>Flame</string>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon_72.png</string>
@@ -10,23 +16,6 @@
 		<string>Icon_50.png</string>
 		<string>Icon_29.png</string>
 	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
-	<key>UILaunchImageFile</key>
-	<string>iPhone</string>
-	<key>UILaunchImageFile~ipad</key>
-	<string>iPad</string>
-	<key>CFBundleDisplayName</key>
-	<string>Flame</string>
-	<key>CFBundleExecutable</key>
-	<string>Flame</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.jerakeen.flametouch</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -38,18 +27,35 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>2.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 	<key>NSMainNibFile~ipad</key>
 	<string>MainWindow-iPad</string>
+	<key>UILaunchImageFile</key>
+	<string>iPhone</string>
+	<key>UILaunchImageFile~ipad</key>
+	<string>iPad</string>
 	<key>UIPrerenderedIcon</key>
 	<false/>
 	<key>UIRequireDeviceCapabilities</key>
 	<string>wifi</string>
 	<key>UIRequiresPersistentWiFi</key>
 	<true/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
 </dict>
 </plist>
