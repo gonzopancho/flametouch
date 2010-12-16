@@ -97,7 +97,7 @@
   // rebuild arrays
   self.serviceBrowsers = [[[NSMutableArray alloc] initWithCapacity: 40] autorelease];
   self.hosts = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
-	self.serviceTypes = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
+  self.serviceTypes = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
 
   // report blank lists.
   [[NSNotificationCenter defaultCenter] postNotificationName:@"newServices" object:self];
