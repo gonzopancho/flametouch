@@ -33,4 +33,7 @@
 @interface AboutViewController : UIViewController <UIWebViewDelegate> {
   IBOutlet UIWebView *theWebView;
 }
+
+-(void)loadHTML;
+
 @end

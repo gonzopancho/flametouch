@@ -105,6 +105,32 @@ NSString * FTNameAndDetailsCellIdentifier = @"NameAndDetails";
   return YES; 
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+  UIViewController *vc = [self viewControllerForIndexPath:indexPath];
+  [self.navigationController pushViewController:vc animated:TRUE];
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath;
+{
+  NSURL *URL = [self UrlForIndexPath:indexPath];
+  [[UIApplication sharedApplication] openURL:URL];
+}
+
+- (UIViewController*)viewControllerForIndexPath:(NSIndexPath *)indexPath;
+{
+  [self doesNotRecognizeSelector:_cmd];
+  return nil;
+}
+
+- (NSURL*)UrlForIndexPath:(NSIndexPath *)indexPath;
+{
+  [self doesNotRecognizeSelector:_cmd];
+  return nil;
+}
+
+
+
 @end
 
 
@@ -188,19 +214,17 @@ NSString * FTNameAndDetailsCellIdentifier = @"NameAndDetails";
 	return cell;
 }
 
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UIViewController*)viewControllerForIndexPath:(NSIndexPath*)indexPath;
+{
   NSNetService *service = [self.host serviceAtIndex:indexPath.row];
   ServiceDetailViewController *sdvc = [[ServiceDetailViewController alloc] initWithHost:self.host service:service];
-  [self.navigationController pushViewController:sdvc animated:TRUE];
-  [sdvc release];
+  return [sdvc autorelease];
 }
 
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+- (NSURL*)UrlForIndexPath:(NSIndexPath *)indexPath;
+{
   NSNetService *service = [self.host serviceAtIndex:indexPath.row];
-  NSURL * URL = service.openableExternalURL;
-  [[UIApplication sharedApplication] openURL:URL];
+  return service.openableExternalURL;
 }
 
 
@@ -278,20 +302,20 @@ NSString * FTNameAndDetailsCellIdentifier = @"NameAndDetails";
 	return cell;
 }
 
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UIViewController*)viewControllerForIndexPath:(NSIndexPath*)indexPath;
+{
 	NSNetService *service = [self.serviceType.services objectAtIndex:indexPath.row];
 	Host * host = [((FlameTouchAppDelegate*)[[UIApplication sharedApplication] delegate]) hostForService:service];
 	ServiceDetailViewController *sdvc = [[ServiceDetailViewController alloc] initWithHost:host service:service];
-	[self.navigationController pushViewController:sdvc animated:TRUE];
-	[sdvc release];
+  return [sdvc autorelease];
 }
 
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+- (NSURL*)UrlForIndexPath:(NSIndexPath *)indexPath;
+{
   NSNetService * service = [self.serviceType.services objectAtIndex:indexPath.row];
   NSURL * URL = service.openableExternalURL;
-  [[UIApplication sharedApplication] openURL:URL];
+  return URL;
 }
 
 

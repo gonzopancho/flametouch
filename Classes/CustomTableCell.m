@@ -13,7 +13,7 @@
 
 static CGFloat HEIGHT = 60;
 static CGFloat LABELHEIGHT = 24;
-static CGFloat XPADDING = 30;
+static CGFloat XPADDING = 10;
 
 
 +(CGFloat) height;
@@ -40,13 +40,17 @@ static CGFloat XPADDING = 30;
   [super layoutSubviews];
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
   
-    self.textLabel.frame = CGRectMake(XPADDING, 6, self.frame.size.width - 100, LABELHEIGHT);
+    self.textLabel.frame = CGRectMake(XPADDING, 5, self.frame.size.width - 100, LABELHEIGHT);
+    self.textLabel.textColor = [UIColor whiteColor];
 
-    self.textLabel.font = [UIFont fontWithName:@"Palatino" size:20];
+    //self.textLabel.font = [UIFont systemFontOfSize:14]; //  fontWithName:@"Palatino" size:16];
 
-    self.detailTextLabel.frame = CGRectMake(XPADDING, (HEIGHT / 2) + 2, self.frame.size.width - 100, LABELHEIGHT);
+    self.detailTextLabel.frame = CGRectMake(XPADDING, (HEIGHT / 2) + 1, self.frame.size.width - 20, LABELHEIGHT);
+    self.detailTextLabel.textColor = [UIColor lightGrayColor];
 
-    self.detailTextLabel.font = [UIFont fontWithName:@"Palatino" size:16];
+    //self.detailTextLabel.font = [UIFont systemFontOfSize:12]; // [UIFont fontWithName:@"Palatino" size:12];
+    
+    //self.backgroundColor = [UIColor lightGrayColor];
   }
 }
 

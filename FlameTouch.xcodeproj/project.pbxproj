@@ -10,7 +10,7 @@
 		1D3623260D0F684500981E51 /* FlameTouchAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* FlameTouchAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		6C296B0E1042CF7A00D84978 /* about.css in Resources */ = {isa = PBXBuildFile; fileRef = 6C296B0D1042CF7A00D84978 /* about.css */; };
@@ -28,6 +28,8 @@
 		E6613B911017996800EA7A4A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6613B901017996800EA7A4A /* SystemConfiguration.framework */; };
 		E6613BA710179C8100EA7A4A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E6613BA610179C8100EA7A4A /* Reachability.m */; };
 		E6613C9D10183F2800EA7A4A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6613C9C10183F2800EA7A4A /* AboutViewController.m */; };
+		E663F22A11EFB19500D78B5A /* TVNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E663F22911EFB19500D78B5A /* TVNavigationController.m */; };
+		E663F28611EFBA9A00D78B5A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E663F28511EFBA9A00D78B5A /* QuartzCore.framework */; };
 		E667F0DC11DE3BED007EBBA6 /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E667F0DB11DE3BED007EBBA6 /* CustomTableCell.m */; };
 		E6761B700EDB15F600E40B14 /* Host.m in Sources */ = {isa = PBXBuildFile; fileRef = E6761B6F0EDB15F600E40B14 /* Host.m */; };
 		E6761BB60EDB1A9A00E40B14 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6761BB50EDB1A9A00E40B14 /* ServiceViewController.m */; };
@@ -39,8 +41,9 @@
 		E67D120E11DBC5A500F6234B /* Icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = E67D120711DBC5A500F6234B /* Icon_72.png */; };
 		E6AAAFCE0FF521BF0042220A /* ServiceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AAAFCD0FF521BF0042220A /* ServiceDetailViewController.m */; };
 		E6AC9312117734D900E60301 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6AC9311117734D900E60301 /* MainWindow-iPad.xib */; };
-		E6BBD9B60FF4DAB400077E5E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6BBD9B50FF4DAB400077E5E /* Entitlements.plist */; };
+		E6B2622E11ECF2AD003FBE36 /* white_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E6B2622D11ECF2AD003FBE36 /* white_arrow.png */; };
 		E6C626191068D21D00847E99 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E6C626181068D21D00847E99 /* LICENSE */; };
+		E6D94F9911E2620000095982 /* RootSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D94F9811E2620000095982 /* RootSplitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +85,9 @@
 		E6613BA610179C8100EA7A4A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Vendor/Reachability.m; sourceTree = "<group>"; };
 		E6613C9B10183F2800EA7A4A /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		E6613C9C10183F2800EA7A4A /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		E663F22811EFB19500D78B5A /* TVNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TVNavigationController.h; path = 3rdParty/TVNavigationController.h; sourceTree = "<group>"; };
+		E663F22911EFB19500D78B5A /* TVNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TVNavigationController.m; path = 3rdParty/TVNavigationController.m; sourceTree = "<group>"; };
+		E663F28511EFBA9A00D78B5A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E667F0DA11DE3BED007EBBA6 /* CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCell.h; sourceTree = "<group>"; };
 		E667F0DB11DE3BED007EBBA6 /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
 		E6761B6E0EDB15F600E40B14 /* Host.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Host.h; sourceTree = "<group>"; };
@@ -100,8 +106,11 @@
 		E6AAAFCC0FF521BF0042220A /* ServiceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDetailViewController.h; sourceTree = "<group>"; };
 		E6AAAFCD0FF521BF0042220A /* ServiceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDetailViewController.m; sourceTree = "<group>"; };
 		E6AC9311117734D900E60301 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		E6B2622D11ECF2AD003FBE36 /* white_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_arrow.png; sourceTree = "<group>"; };
 		E6BBD9B50FF4DAB400077E5E /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		E6C626181068D21D00847E99 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E6D94F9711E2620000095982 /* RootSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSplitViewController.h; sourceTree = "<group>"; };
+		E6D94F9811E2620000095982 /* RootSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSplitViewController.m; sourceTree = "<group>"; };
 		E6F2B85F1020F7390084D25B /* service_list_builder.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = service_list_builder.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +123,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				E6613B911017996800EA7A4A /* SystemConfiguration.framework in Frameworks */,
+				E663F28611EFBA9A00D78B5A /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +135,8 @@
 			children = (
 				1D3623240D0F684500981E51 /* FlameTouchAppDelegate.h */,
 				1D3623250D0F684500981E51 /* FlameTouchAppDelegate.m */,
+				E6D94F9711E2620000095982 /* RootSplitViewController.h */,
+				E6D94F9811E2620000095982 /* RootSplitViewController.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				E6761BB40EDB1A9A00E40B14 /* ServiceViewController.h */,
@@ -158,6 +170,7 @@
 			children = (
 				6C0DA533111AD7CB0087122A /* Ideas */,
 				080E96DDFE201D6D7F000001 /* Classes */,
+				E663F23411EFB1AC00D78B5A /* 3rdParty */,
 				E6613B9910179C4C00EA7A4A /* Vendor */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources Common */,
@@ -202,6 +215,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				E663F28511EFBA9A00D78B5A /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -213,6 +227,15 @@
 				E6613BA610179C8100EA7A4A /* Reachability.m */,
 			);
 			name = Vendor;
+			sourceTree = "<group>";
+		};
+		E663F23411EFB1AC00D78B5A /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				E663F22811EFB19500D78B5A /* TVNavigationController.h */,
+				E663F22911EFB19500D78B5A /* TVNavigationController.m */,
+			);
+			name = 3rdParty;
 			sourceTree = "<group>";
 		};
 		E67D11DB11DBC32800F6234B /* Resources-iPhone */ = {
@@ -228,6 +251,7 @@
 		E67D120011DBC5A500F6234B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E6B2622D11ECF2AD003FBE36 /* white_arrow.png */,
 				E67D120111DBC5A500F6234B /* flame_128x128.png */,
 				6CCD51FA11DDD7AF005A08CD /* flame_256x256.png */,
 				E67D120211DBC5A500F6234B /* flame_square.psd */,
@@ -279,6 +303,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FlameTouch" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -304,7 +329,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C9CB34C103DBE9400D2FDEA /* MainWindow.xib in Resources */,
-				E6BBD9B60FF4DAB400077E5E /* Entitlements.plist in Resources */,
 				6CE234C0103C781200DAE0F3 /* ServiceNames.strings in Resources */,
 				6CE235AE103C986600DAE0F3 /* Localizable.strings in Resources */,
 				6CE235FF103CAD7400DAE0F3 /* about.html in Resources */,
@@ -322,6 +346,7 @@
 				E67D120D11DBC5A500F6234B /* Icon_57.png in Resources */,
 				6CCD4F0411DC8020005A08CD /* Icon_57@2x.png in Resources */,
 				E67D120E11DBC5A500F6234B /* Icon_72.png in Resources */,
+				E6B2622E11ECF2AD003FBE36 /* white_arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +368,8 @@
 				E6613C9D10183F2800EA7A4A /* AboutViewController.m in Sources */,
 				6CA160131020BCA700ADCEB0 /* ServiceType.m in Sources */,
 				E667F0DC11DE3BED007EBBA6 /* CustomTableCell.m in Sources */,
+				E6D94F9911E2620000095982 /* RootSplitViewController.m in Sources */,
+				E663F22A11EFB19500D78B5A /* TVNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,17 +412,8 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = FlameTouch_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				PRODUCT_NAME = Flame;
-				SDKROOT = iphoneos4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -403,16 +421,8 @@
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = FlameTouch_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				PRODUCT_NAME = Flame;
-				SDKROOT = iphoneos4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -423,13 +433,18 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
+				PRODUCT_NAME = Flame;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -437,13 +452,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tom Insam";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ADBA976D-08DA-4085-96A1-AF5A32394A67";
-				SDKROOT = iphoneos3.0;
+				PRODUCT_NAME = Flame;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -451,29 +472,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos3.2;
+				PRODUCT_NAME = Flame;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = AdHoc;
 		};
 		E6BBD9B20FF4DA6400077E5E /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = FlameTouch_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				PRODUCT_NAME = Flame;
-				SDKROOT = iphoneos4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = AdHoc;

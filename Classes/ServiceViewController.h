@@ -42,6 +42,8 @@ extern NSString * FTNameAndDetailsCellIdentifier;
 
 - (void) setCaption;
 - (void) newServices: (id) sender;
+- (UIViewController*)viewControllerForIndexPath:(NSIndexPath*)indexPath;
+- (NSURL*)UrlForIndexPath:(NSIndexPath*)indexPath;
 
 @end
 

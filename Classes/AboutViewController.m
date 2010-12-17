@@ -29,25 +29,26 @@
 
 @implementation AboutViewController
 
--(id)init {
-  self = [super init];
-  if (!self) return nil;
+-(void)viewDidLoad;
+{
+  NSLog(@"loadView");
   self.title = NSLocalizedString(@"Flame for iPhone", @"Full application name");
 
   theWebView = [[UIWebView alloc] initWithFrame:self.view.bounds];
   theWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   [self.view addSubview:theWebView];
   [theWebView setDelegate:self];
-  
-  NSMutableString *htmlString = [NSMutableString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"] encoding:NSUTF8StringEncoding error:NULL];
-  
-  NSString* version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey];
+  [self addObserver:self forKeyPath:@"view.frame" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:nil];
 
-  [htmlString replaceOccurrencesOfString:@"#{VERSION}" withString:version options:0 range:NSMakeRange(0, [htmlString length])];
-  
-  [theWebView loadHTMLString: htmlString baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
-  
-  return self;
+  [self loadHTML];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+  // called when the frame changes. Need to explicitly re-flow the web content.
+  theWebView.frame = self.view.frame;
+  // probably an easier way of doing it than reloading everything, of course.
+  [self loadHTML];
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -57,6 +58,14 @@
   }
   return true;
 }
+   
+-(void)loadHTML;
+{
+  NSMutableString *htmlString = [NSMutableString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"] encoding:NSUTF8StringEncoding error:NULL];
+  NSString* version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey];
+  [htmlString replaceOccurrencesOfString:@"#{VERSION}" withString:version options:0 range:NSMakeRange(0, [htmlString length])];
+  [theWebView loadHTMLString: htmlString baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
+}     
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -67,10 +76,13 @@
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
   // Release anything that's not essential, such as cached data
+  [theWebView setDelegate:nil];
+  [theWebView release];
 }
 
 
 - (void)dealloc {
+  [self removeObserver:self forKeyPath:@"view.frame"];
   [theWebView setDelegate:nil];
   [theWebView release];
   [super dealloc];

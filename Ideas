@@ -1,3 +1,9 @@
 Add Filter field above view
 
 Better looking multi-line labels for Service property data
+
+TODO / BUGS
+
+deselect host when opening about page
+retain host selection when new services appear
+display service details in expanind table cell.

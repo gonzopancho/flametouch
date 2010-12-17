@@ -36,8 +36,8 @@
 // socket resolving/nasty C-level things
 #include <netinet/in.h>
 #include <arpa/inet.h>
-
-
+#include "RootSplitViewController.h"
+#include "AboutViewController.h"
 
 @implementation FlameTouchAppDelegate
 
@@ -58,7 +58,13 @@
   self.serviceTypes = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
 
   // Configure and show the window
-  [window addSubview:[navigationController view]];
+  
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    RootSplitViewController* split = [[RootSplitViewController alloc] initWithLeftPane:navigationController defaultView:[[[AboutViewController alloc] init] autorelease]];
+    [window addSubview:split.view];
+  } else {
+    [window addSubview:[navigationController view]];
+  }
   [window makeKeyAndVisible];
   
   // meta-discovery
@@ -91,7 +97,7 @@
   // rebuild arrays
   self.serviceBrowsers = [[[NSMutableArray alloc] initWithCapacity: 40] autorelease];
   self.hosts = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
-	self.serviceTypes = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
+  self.serviceTypes = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
 
   // report blank lists.
   [[NSNotificationCenter defaultCenter] postNotificationName:@"newServices" object:self];

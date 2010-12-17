@@ -29,6 +29,8 @@
   for support.
 */
 
+#import "QuartzCore/CAAnimation.h"
+
 #import "RootViewController.h"
 #import "ServiceViewController.h"
 #import "FlameTouchAppDelegate.h"
@@ -39,20 +41,13 @@
 
 @implementation RootViewController
 
+@synthesize displayThingy, white_arrow;
 
 - (void) awakeFromNib {
   self = [super initWithStyle:UITableViewStylePlain];
 
   if (self) {
-    UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshList)] autorelease];
-    self.navigationItem.leftBarButtonItem = refreshButton;
-
-    UIButton * myAboutButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    myAboutButton.frame = CGRectMake(0.0,0.0,20.0,20.0);
-    [myAboutButton addTarget:self action:@selector(showAboutPane) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem * aboutButton = [[[UIBarButtonItem alloc] initWithCustomView:myAboutButton] autorelease];
-    [myAboutButton setTitle:NSLocalizedString(@"About Flame", @"Label for About Button (not visible on screen, but used for Accessibility)") forState:0];
-    self.navigationItem.rightBarButtonItem = aboutButton;
+    self.displayThingy = nil;
 
     NSArray * segmentedControlItems = [NSArray arrayWithObjects:NSLocalizedString(@"Hosts", @"Title of Segmented Control item for selecting the Hosts list"), NSLocalizedString(@"Services", @"Title of Segmented Control item for selecting the Service list"), nil];
     UISegmentedControl * segmentedControl = [[[UISegmentedControl alloc] initWithItems:segmentedControlItems] autorelease];
@@ -61,6 +56,17 @@
     segmentedControl.selectedSegmentIndex = ((FlameTouchAppDelegate*)[[UIApplication sharedApplication] delegate]).displayMode;
     self.navigationItem.titleView = segmentedControl;
 
+    UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshList)] autorelease];
+    self.navigationItem.leftBarButtonItem = refreshButton;
+    
+    UIButton * myAboutButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    myAboutButton.frame = CGRectMake(0.0,0.0,20.0,20.0);
+    [myAboutButton addTarget:self action:@selector(showAboutPane) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * aboutButton = [[[UIBarButtonItem alloc] initWithCustomView:myAboutButton] autorelease];
+    [myAboutButton setTitle:NSLocalizedString(@"About Flame", @"Label for About Button (not visible on screen, but used for Accessibility)") forState:0];
+    self.navigationItem.rightBarButtonItem = aboutButton;
+    
+    
     CGRect searchBarRect = CGRectMake(0, 0, 100, 44);
     UISearchBar * searchBar = [[[UISearchBar alloc] initWithFrame:searchBarRect] autorelease];
     searchBar.delegate = self;
@@ -71,10 +77,34 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newServices:) name:@"newServices" object:nil ];
     
     [self.tableView setRowHeight:[CustomTableCell height]];
+    
+    // this has to be here and not in the custom cell because I need to set the
+    // background colour even for bits of the table without cells.
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+      self.tableView.separatorColor = [UIColor lightGrayColor];
+      self.tableView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:1];
+      self.white_arrow = [UIImage imageNamed:@"white_arrow.png"];
+    }
+
   }
 
 }
 
+-(void)setDisplayThingy:(RootSplitViewController*)newController;
+{
+  NSLog(@"setter");
+  if (newController != displayThingy) {
+    [displayThingy release];
+    displayThingy = [newController retain];
+  }
+
+  // if we're setting a nav controller, and we still have our 'about'
+  // button, give it to the splitViewController.
+  if (newController && self.navigationItem.rightBarButtonItem) {
+    newController.rightBarButtonItem = self.navigationItem.rightBarButtonItem;
+    self.navigationItem.rightBarButtonItem = nil;
+  }
+}
 
 
 /*
@@ -84,6 +114,12 @@
 -(void) changeDisplayMode:(id) sender {
   NSInteger selection = [(UISegmentedControl*) sender selectedSegmentIndex];
 
+  // rather than snapping between the views, fade it nicely. LOOKS SO AWESOME.
+  CATransition *transition = [CATransition animation];
+  transition.duration = 0.25; // any slower than this and it's boring - any faster and it feels stuttery
+  transition.type = kCATransitionFade;
+  [self.view.layer addAnimation:transition forKey:nil];
+  
   ((FlameTouchAppDelegate *)[[UIApplication sharedApplication] delegate]).displayMode = selection;
 
 	if (selection == SHOWSERVERS) {
@@ -97,7 +133,11 @@
 
 -(void)showAboutPane {
   AboutViewController *avc = [[AboutViewController alloc] init];
-  [self.navigationController pushViewController:avc animated:TRUE];
+  if (self.displayThingy) {
+    [self.displayThingy setViewController:avc];
+  } else {
+    [self.navigationController pushViewController:avc animated:TRUE];
+  }
   [avc release];
 }
 
@@ -183,6 +223,12 @@
 		cell.detailTextLabel.text = [serviceType details];
 	}
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+  // iPad left-column needs a white accessory arrow so it shows up
+  // against the background.
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    cell.accessoryView = [[[UIImageView alloc] initWithImage:white_arrow] autorelease];
+  }
   return cell;
 }
 
@@ -201,7 +247,12 @@
 		dlc = [[ServiceByTypeViewController alloc] initWithServiceType: serviceType];
 	}
 
-	[self.navigationController pushViewController:dlc animated:TRUE];
+  if (self.displayThingy) {
+    [self.displayThingy setViewController:dlc];
+  } else {
+    [self.navigationController pushViewController:dlc animated:TRUE];
+  }
+
   [dlc release];
 }
 
@@ -211,12 +262,9 @@
 
 #pragma mark UISearchBarDelegate
 
-
 - (void) searchBar: (UISearchBar *) searchBar textDidChange: (NSString *) searchText {
   [self runFilter];
 }
-
-
 
 - (void) searchBarCancelButtonClicked: (UISearchBar *) searchBar {
   ((UISearchBar*)self.tableView.tableHeaderView).text = @"";
