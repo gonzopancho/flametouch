@@ -31,6 +31,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Host.h"
+#import "AboutViewController.h"
 
 // to detect network reachability
 #import <SystemConfiguration/SystemConfiguration.h>
@@ -44,7 +45,9 @@
   
   UIWindow *window;
   UINavigationController *navigationController;
-  
+  UIViewController *splitViewController; // weak linked!
+  AboutViewController *aboutViewController;
+
   NSNetServiceBrowser *metaBrowser;
   NSMutableArray *serviceBrowsers;
   NSMutableArray *hosts;
@@ -55,9 +58,12 @@
 
 - (void)refreshList;
 - (Host*) hostForService: (NSNetService*) service;
+-(void)displayViewController:(UIViewController*) vc asRoot:(BOOL)asRoot;
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) IBOutlet UIViewController *splitViewController;
+@property (nonatomic, retain) AboutViewController *aboutViewController;
 @property (nonatomic, retain) NSMutableArray* hosts;
 @property (nonatomic, retain) NSMutableArray* serviceTypes;
 @property (nonatomic, retain) NSMutableArray* serviceBrowsers;

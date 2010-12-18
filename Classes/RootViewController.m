@@ -41,19 +41,22 @@
 
 @implementation RootViewController
 
-@synthesize displayThingy, white_arrow;
+@synthesize white_arrow;
+
+// utility, because we do it so much
+-(FlameTouchAppDelegate *)appDelegate {
+  return (FlameTouchAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
 
 - (void) awakeFromNib {
   self = [super initWithStyle:UITableViewStylePlain];
 
   if (self) {
-    self.displayThingy = nil;
-
     NSArray * segmentedControlItems = [NSArray arrayWithObjects:NSLocalizedString(@"Hosts", @"Title of Segmented Control item for selecting the Hosts list"), NSLocalizedString(@"Services", @"Title of Segmented Control item for selecting the Service list"), nil];
     UISegmentedControl * segmentedControl = [[[UISegmentedControl alloc] initWithItems:segmentedControlItems] autorelease];
     [segmentedControl addTarget:self action:@selector(changeDisplayMode:) forControlEvents:UIControlEventValueChanged];
     segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    segmentedControl.selectedSegmentIndex = ((FlameTouchAppDelegate*)[[UIApplication sharedApplication] delegate]).displayMode;
+    segmentedControl.selectedSegmentIndex = [self appDelegate].displayMode;
     self.navigationItem.titleView = segmentedControl;
 
     UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshList)] autorelease];
@@ -90,23 +93,6 @@
 
 }
 
--(void)setDisplayThingy:(RootSplitViewController*)newController;
-{
-  NSLog(@"setter");
-  if (newController != displayThingy) {
-    [displayThingy release];
-    displayThingy = [newController retain];
-  }
-
-  // if we're setting a nav controller, and we still have our 'about'
-  // button, give it to the splitViewController.
-  if (newController && self.navigationItem.rightBarButtonItem) {
-    newController.rightBarButtonItem = self.navigationItem.rightBarButtonItem;
-    self.navigationItem.rightBarButtonItem = nil;
-  }
-}
-
-
 /*
  action of the Hosts / Services segmented control
  sets the display mode in the app delegate and updates the view's title accordingly 
@@ -120,7 +106,7 @@
   transition.type = kCATransitionFade;
   [self.view.layer addAnimation:transition forKey:nil];
   
-  ((FlameTouchAppDelegate *)[[UIApplication sharedApplication] delegate]).displayMode = selection;
+  [self appDelegate].displayMode = selection;
 
 	if (selection == SHOWSERVERS) {
     self.title = NSLocalizedString(@"Hosts", @"Title of Button to get back to the Hosts list");
@@ -132,18 +118,11 @@
 
 
 -(void)showAboutPane {
-  AboutViewController *avc = [[AboutViewController alloc] init];
-  if (self.displayThingy) {
-    [self.displayThingy setViewController:avc];
-  } else {
-    [self.navigationController pushViewController:avc animated:TRUE];
-  }
-  [avc release];
+  [[self appDelegate] displayViewController:nil asRoot:YES];
 }
 
 -(void)refreshList {
-  FlameTouchAppDelegate *delegate = (FlameTouchAppDelegate *)[[UIApplication sharedApplication] delegate];
-  [delegate refreshList];
+  [[self appDelegate] refreshList];
   [self runFilter];
 }
 
@@ -163,12 +142,11 @@
     self.filteredServiceTypes = nil;
   }
   else {
-    FlameTouchAppDelegate *delegate = (FlameTouchAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", filterText];
-    self.filteredHosts = [delegate.hosts filteredArrayUsingPredicate:predicate];
+    self.filteredHosts = [[self appDelegate].hosts filteredArrayUsingPredicate:predicate];
     predicate = [NSPredicate predicateWithFormat:@"(humanReadableType CONTAINS[cd] %@) or (type CONTAINS[cd] %@)", filterText, filterText];
-    self.filteredServiceTypes = [delegate.serviceTypes filteredArrayUsingPredicate:predicate];    
+    self.filteredServiceTypes = [[self appDelegate].serviceTypes filteredArrayUsingPredicate:predicate];    
   }
   
   [self.tableView reloadData];
@@ -191,10 +169,9 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  FlameTouchAppDelegate *delegate = (FlameTouchAppDelegate *)[[UIApplication sharedApplication] delegate];
   NSInteger result;
 	
-  if (delegate.displayMode == SHOWSERVERS) {
+  if ([self appDelegate].displayMode == SHOWSERVERS) {
 		result = [self.filteredHosts count];
 	}
 	else {
@@ -211,8 +188,7 @@
     cell = [[[CustomTableCell alloc] initWithReuseIdentifier:FTNameAndDetailsCellIdentifier] autorelease];
   }
   
-  FlameTouchAppDelegate *delegate = (FlameTouchAppDelegate *)[[UIApplication sharedApplication] delegate];
-	if (delegate.displayMode == SHOWSERVERS) {
+	if ([self appDelegate].displayMode == SHOWSERVERS) {
 		Host *host = (Host*)[self.filteredHosts objectAtIndex:indexPath.row];
 		cell.textLabel.text = [host name];
 		cell.detailTextLabel.text = [host details];
@@ -227,7 +203,7 @@
   // iPad left-column needs a white accessory arrow so it shows up
   // against the background.
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-    cell.accessoryView = [[[UIImageView alloc] initWithImage:white_arrow] autorelease];
+    cell.accessoryView = [[[UIImageView alloc] initWithImage:self.white_arrow] autorelease];
   }
   return cell;
 }
@@ -235,10 +211,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   // Navigation logic may go here. Create and push another view controller.
-  FlameTouchAppDelegate *delegate = (FlameTouchAppDelegate *)[[UIApplication sharedApplication] delegate];
   
   ServiceViewController * dlc = nil;
-	if (delegate.displayMode == SHOWSERVERS) {
+	if ([self appDelegate].displayMode == SHOWSERVERS) {
 		Host * host = (Host*)[self.filteredHosts objectAtIndex:indexPath.row];
 		dlc = [[ServiceByHostViewController alloc] initWithHost:host];
 	}
@@ -246,12 +221,8 @@
 		ServiceType * serviceType = [self.filteredServiceTypes objectAtIndex:indexPath.row];
 		dlc = [[ServiceByTypeViewController alloc] initWithServiceType: serviceType];
 	}
-
-  if (self.displayThingy) {
-    [self.displayThingy setViewController:dlc];
-  } else {
-    [self.navigationController pushViewController:dlc animated:TRUE];
-  }
+  
+  [[self appDelegate] displayViewController:dlc asRoot:YES];
 
   [dlc release];
 }
@@ -315,23 +286,17 @@
 }
 
 
-
-
-
 #pragma mark Override
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   return YES; 
 }
-
 
 - (void) dealloc {
   [filteredHosts release];
   [filteredServiceTypes release];
   [super dealloc];
 }
-
 
 @end
 

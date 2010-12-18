@@ -24,6 +24,9 @@
 		6CE235AE103C986600DAE0F3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CE235AC103C986600DAE0F3 /* Localizable.strings */; };
 		6CE235FF103CAD7400DAE0F3 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 6CE235FD103CAD7400DAE0F3 /* about.html */; };
 		E60D15190EDDC2EB0054FB36 /* NSNetService+FlameExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E60D15180EDDC2EB0054FB36 /* NSNetService+FlameExtras.m */; };
+		E650499212BC18D10064FE0B /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = E650498D12BC18D10064FE0B /* MGSplitCornersView.m */; };
+		E650499312BC18D10064FE0B /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E650498F12BC18D10064FE0B /* MGSplitDividerView.m */; };
+		E650499412BC18D10064FE0B /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E650499112BC18D10064FE0B /* MGSplitViewController.m */; };
 		E6613AF510177E3500EA7A4A /* iPhone-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = E6613AF410177E3500EA7A4A /* iPhone-Portrait.png */; };
 		E6613B911017996800EA7A4A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6613B901017996800EA7A4A /* SystemConfiguration.framework */; };
 		E6613BA710179C8100EA7A4A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E6613BA610179C8100EA7A4A /* Reachability.m */; };
@@ -43,7 +46,6 @@
 		E6AC9312117734D900E60301 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6AC9311117734D900E60301 /* MainWindow-iPad.xib */; };
 		E6B2622E11ECF2AD003FBE36 /* white_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E6B2622D11ECF2AD003FBE36 /* white_arrow.png */; };
 		E6C626191068D21D00847E99 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E6C626181068D21D00847E99 /* LICENSE */; };
-		E6D94F9911E2620000095982 /* RootSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D94F9811E2620000095982 /* RootSplitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +81,12 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E60D15170EDDC2EB0054FB36 /* NSNetService+FlameExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNetService+FlameExtras.h"; sourceTree = "<group>"; };
 		E60D15180EDDC2EB0054FB36 /* NSNetService+FlameExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNetService+FlameExtras.m"; sourceTree = "<group>"; };
+		E650498C12BC18D10064FE0B /* MGSplitCornersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSplitCornersView.h; path = 3rdParty/MGSplitCornersView.h; sourceTree = "<group>"; };
+		E650498D12BC18D10064FE0B /* MGSplitCornersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSplitCornersView.m; path = 3rdParty/MGSplitCornersView.m; sourceTree = "<group>"; };
+		E650498E12BC18D10064FE0B /* MGSplitDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSplitDividerView.h; path = 3rdParty/MGSplitDividerView.h; sourceTree = "<group>"; };
+		E650498F12BC18D10064FE0B /* MGSplitDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSplitDividerView.m; path = 3rdParty/MGSplitDividerView.m; sourceTree = "<group>"; };
+		E650499012BC18D10064FE0B /* MGSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSplitViewController.h; path = 3rdParty/MGSplitViewController.h; sourceTree = "<group>"; };
+		E650499112BC18D10064FE0B /* MGSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSplitViewController.m; path = 3rdParty/MGSplitViewController.m; sourceTree = "<group>"; };
 		E6613AF410177E3500EA7A4A /* iPhone-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhone-Portrait.png"; path = "Resources-iPhone/iPhone-Portrait.png"; sourceTree = "<group>"; };
 		E6613B901017996800EA7A4A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E6613BA510179C8100EA7A4A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Vendor/Reachability.h; sourceTree = "<group>"; };
@@ -109,8 +117,6 @@
 		E6B2622D11ECF2AD003FBE36 /* white_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_arrow.png; sourceTree = "<group>"; };
 		E6BBD9B50FF4DAB400077E5E /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		E6C626181068D21D00847E99 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		E6D94F9711E2620000095982 /* RootSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSplitViewController.h; sourceTree = "<group>"; };
-		E6D94F9811E2620000095982 /* RootSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSplitViewController.m; sourceTree = "<group>"; };
 		E6F2B85F1020F7390084D25B /* service_list_builder.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = service_list_builder.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,8 +141,6 @@
 			children = (
 				1D3623240D0F684500981E51 /* FlameTouchAppDelegate.h */,
 				1D3623250D0F684500981E51 /* FlameTouchAppDelegate.m */,
-				E6D94F9711E2620000095982 /* RootSplitViewController.h */,
-				E6D94F9811E2620000095982 /* RootSplitViewController.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				E6761BB40EDB1A9A00E40B14 /* ServiceViewController.h */,
@@ -232,6 +236,12 @@
 		E663F23411EFB1AC00D78B5A /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				E650498C12BC18D10064FE0B /* MGSplitCornersView.h */,
+				E650498D12BC18D10064FE0B /* MGSplitCornersView.m */,
+				E650498E12BC18D10064FE0B /* MGSplitDividerView.h */,
+				E650498F12BC18D10064FE0B /* MGSplitDividerView.m */,
+				E650499012BC18D10064FE0B /* MGSplitViewController.h */,
+				E650499112BC18D10064FE0B /* MGSplitViewController.m */,
 				E663F22811EFB19500D78B5A /* TVNavigationController.h */,
 				E663F22911EFB19500D78B5A /* TVNavigationController.m */,
 			);
@@ -368,8 +378,10 @@
 				E6613C9D10183F2800EA7A4A /* AboutViewController.m in Sources */,
 				6CA160131020BCA700ADCEB0 /* ServiceType.m in Sources */,
 				E667F0DC11DE3BED007EBBA6 /* CustomTableCell.m in Sources */,
-				E6D94F9911E2620000095982 /* RootSplitViewController.m in Sources */,
 				E663F22A11EFB19500D78B5A /* TVNavigationController.m in Sources */,
+				E650499212BC18D10064FE0B /* MGSplitCornersView.m in Sources */,
+				E650499312BC18D10064FE0B /* MGSplitDividerView.m in Sources */,
+				E650499412BC18D10064FE0B /* MGSplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

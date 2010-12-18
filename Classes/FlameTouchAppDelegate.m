@@ -33,11 +33,15 @@
 #import "RootViewController.h"
 #import "ServiceType.h"
 #import "NSNetService+FlameExtras.h"
+#import "MGSplitViewController.h"
+#import "AboutViewController.h"
+#import "TVNavigationController.h"
+#import "QuartzCore/CAAnimation.h"
+#import "TVNavigationController.h"
+
 // socket resolving/nasty C-level things
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include "RootSplitViewController.h"
-#include "AboutViewController.h"
 
 @implementation FlameTouchAppDelegate
 
@@ -47,6 +51,8 @@
 @synthesize serviceTypes;
 @synthesize serviceBrowsers;
 @synthesize serviceURLs;
+@synthesize splitViewController;
+@synthesize aboutViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 {
@@ -56,15 +62,28 @@
   self.serviceBrowsers = [[[NSMutableArray alloc] initWithCapacity: 40] autorelease];
   self.hosts = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
   self.serviceTypes = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
+  self.aboutViewController = [[[AboutViewController alloc] init] autorelease];
 
   // Configure and show the window
   
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-    RootSplitViewController* split = [[RootSplitViewController alloc] initWithLeftPane:navigationController defaultView:[[[AboutViewController alloc] init] autorelease]];
+    /// on ipad, we want a top-level split view, with the root navigation
+    // controller on the left, controlling the display on the right.
+    MGSplitViewController *split = [[[MGSplitViewController alloc] init] autorelease];
+    [split setShowsMasterInPortrait:YES];
+    [split setMasterViewController:navigationController];
+    // this is a subclass of navigation controller that can have multiple 'root'
+    // nodes, because the 'real' root is actually in the left pane.
+    TVNavigationController* tv = [[[TVNavigationController alloc] initWithRootViewController:aboutViewController] autorelease];
+    [split setDetailViewController:tv];
+    self.splitViewController = split;
     [window addSubview:split.view];
+
   } else {
-    [window addSubview:[navigationController view]];
+    // just use a single navigation controller on iphone
+    [window addSubview:navigationController.view];
   }
+
   [window makeKeyAndVisible];
   
   // meta-discovery
@@ -76,9 +95,35 @@
   self.serviceURLs = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceURLs" ofType:@"plist"]];
   
   // in a couple of seconds, report if we have no wifi
-  [self performSelector:@selector(checkWifi) withObject:nil afterDelay:5.0];
+  [self performSelector:@selector(checkWifi) withObject:nil afterDelay:8.0];
   
 	return YES; // happy days are here again
+}
+
+-(void)displayViewController:(UIViewController*) vc asRoot:(BOOL)asRoot;
+{
+  if (!vc) {
+    vc = self.aboutViewController;
+  }
+
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    MGSplitViewController* split = (MGSplitViewController*)self.splitViewController;
+    TVNavigationController *tv = (TVNavigationController*)[split detailViewController];
+
+    if (asRoot) {
+      // rather than snapping between the views, fade it nicely. LOOKS SO AWESOME.
+      CATransition *transition = [CATransition animation];
+      transition.duration = 0.25; // any slower than this and it's boring - any faster and it feels stuttery
+      transition.type = kCATransitionFade;
+      [tv.view.layer addAnimation:transition forKey:nil];
+      [tv setRootViewController:vc];
+    } else {
+      [tv pushViewController:vc animated:YES];
+    }
+  } else {
+    [self.navigationController pushViewController:vc animated:YES];
+  }
+  
 }
 
 -(void)refreshList;
