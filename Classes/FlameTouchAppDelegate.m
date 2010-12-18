@@ -52,7 +52,6 @@
 @synthesize serviceBrowsers;
 @synthesize serviceURLs;
 @synthesize splitViewController;
-@synthesize aboutViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 {
@@ -62,7 +61,6 @@
   self.serviceBrowsers = [[[NSMutableArray alloc] initWithCapacity: 40] autorelease];
   self.hosts = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
   self.serviceTypes = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
-  self.aboutViewController = [[[AboutViewController alloc] init] autorelease];
 
   // Configure and show the window
   
@@ -74,7 +72,8 @@
     [split setMasterViewController:navigationController];
     // this is a subclass of navigation controller that can have multiple 'root'
     // nodes, because the 'real' root is actually in the left pane.
-    TVNavigationController* tv = [[[TVNavigationController alloc] initWithRootViewController:aboutViewController] autorelease];
+    AboutViewController *startViewController = [[[AboutViewController alloc] initWithFile:@"start"] autorelease];
+    TVNavigationController* tv = [[[TVNavigationController alloc] initWithRootViewController:startViewController] autorelease];
     [split setDetailViewController:tv];
     self.splitViewController = split;
     [window addSubview:split.view];
@@ -103,7 +102,7 @@
 -(void)displayViewController:(UIViewController*) vc asRoot:(BOOL)asRoot;
 {
   if (!vc) {
-    vc = self.aboutViewController;
+    vc = [[[AboutViewController alloc] init] autorelease];
   }
 
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

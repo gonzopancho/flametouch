@@ -29,6 +29,24 @@
 
 @implementation AboutViewController
 
+@synthesize filename;
+
+-(id)init;
+{
+  if (self = [super init]) {
+    self.filename = @"about";
+  }
+  return self;
+}
+
+-(id)initWithFile:(NSString *)name;
+{
+  if (self = [super init]) {
+    self.filename = name;
+  }
+  return self;
+}
+
 -(void)viewDidLoad;
 {
   NSLog(@"loadView");
@@ -61,7 +79,7 @@
    
 -(void)loadHTML;
 {
-  NSMutableString *htmlString = [NSMutableString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"] encoding:NSUTF8StringEncoding error:NULL];
+  NSMutableString *htmlString = [NSMutableString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.filename ofType:@"html"] encoding:NSUTF8StringEncoding error:NULL];
   NSString* version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey];
   [htmlString replaceOccurrencesOfString:@"#{VERSION}" withString:version options:0 range:NSMakeRange(0, [htmlString length])];
   [theWebView loadHTMLString: htmlString baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];

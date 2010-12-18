@@ -32,8 +32,12 @@
 #import <UIKit/UIKit.h>
 @interface AboutViewController : UIViewController <UIWebViewDelegate> {
   IBOutlet UIWebView *theWebView;
+  NSString *filename;
 }
 
+@property (nonatomic,retain) NSString *filename;
+
+-(id)initWithFile:(NSString *)name;
 -(void)loadHTML;
 
 @end
