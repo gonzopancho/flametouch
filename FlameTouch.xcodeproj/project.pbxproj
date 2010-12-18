@@ -30,7 +30,7 @@
 		E6613AF510177E3500EA7A4A /* iPhone-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = E6613AF410177E3500EA7A4A /* iPhone-Portrait.png */; };
 		E6613B911017996800EA7A4A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6613B901017996800EA7A4A /* SystemConfiguration.framework */; };
 		E6613BA710179C8100EA7A4A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E6613BA610179C8100EA7A4A /* Reachability.m */; };
-		E6613C9D10183F2800EA7A4A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6613C9C10183F2800EA7A4A /* AboutViewController.m */; };
+		E6613C9D10183F2800EA7A4A /* HTMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6613C9C10183F2800EA7A4A /* HTMLViewController.m */; };
 		E663F22A11EFB19500D78B5A /* TVNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E663F22911EFB19500D78B5A /* TVNavigationController.m */; };
 		E663F28611EFBA9A00D78B5A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E663F28511EFBA9A00D78B5A /* QuartzCore.framework */; };
 		E667F0DC11DE3BED007EBBA6 /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E667F0DB11DE3BED007EBBA6 /* CustomTableCell.m */; };
@@ -92,8 +92,8 @@
 		E6613B901017996800EA7A4A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E6613BA510179C8100EA7A4A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Vendor/Reachability.h; sourceTree = "<group>"; };
 		E6613BA610179C8100EA7A4A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Vendor/Reachability.m; sourceTree = "<group>"; };
-		E6613C9B10183F2800EA7A4A /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
-		E6613C9C10183F2800EA7A4A /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		E6613C9B10183F2800EA7A4A /* HTMLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = HTMLViewController.h; sourceTree = "<group>"; };
+		E6613C9C10183F2800EA7A4A /* HTMLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLViewController.m; sourceTree = "<group>"; };
 		E663F22811EFB19500D78B5A /* TVNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TVNavigationController.h; path = 3rdParty/TVNavigationController.h; sourceTree = "<group>"; };
 		E663F22911EFB19500D78B5A /* TVNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TVNavigationController.m; path = 3rdParty/TVNavigationController.m; sourceTree = "<group>"; };
 		E663F28511EFBA9A00D78B5A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -155,8 +155,8 @@
 				6CA160121020BCA700ADCEB0 /* ServiceType.m */,
 				E60D15170EDDC2EB0054FB36 /* NSNetService+FlameExtras.h */,
 				E60D15180EDDC2EB0054FB36 /* NSNetService+FlameExtras.m */,
-				E6613C9B10183F2800EA7A4A /* AboutViewController.h */,
-				E6613C9C10183F2800EA7A4A /* AboutViewController.m */,
+				E6613C9B10183F2800EA7A4A /* HTMLViewController.h */,
+				E6613C9C10183F2800EA7A4A /* HTMLViewController.m */,
 				E667F0DA11DE3BED007EBBA6 /* CustomTableCell.h */,
 				E667F0DB11DE3BED007EBBA6 /* CustomTableCell.m */,
 			);
@@ -379,7 +379,7 @@
 				E60D15190EDDC2EB0054FB36 /* NSNetService+FlameExtras.m in Sources */,
 				E6AAAFCE0FF521BF0042220A /* ServiceDetailViewController.m in Sources */,
 				E6613BA710179C8100EA7A4A /* Reachability.m in Sources */,
-				E6613C9D10183F2800EA7A4A /* AboutViewController.m in Sources */,
+				E6613C9D10183F2800EA7A4A /* HTMLViewController.m in Sources */,
 				6CA160131020BCA700ADCEB0 /* ServiceType.m in Sources */,
 				E667F0DC11DE3BED007EBBA6 /* CustomTableCell.m in Sources */,
 				E663F22A11EFB19500D78B5A /* TVNavigationController.m in Sources */,

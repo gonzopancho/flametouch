@@ -1,5 +1,5 @@
 /*
-  AboutViewController.m
+  HTMLViewController.m
   
   Copyright (c) 2009 Sven-S. Porst, Tom Insam
   
@@ -25,19 +25,11 @@
   for support.
 */
 
-#import "AboutViewController.h"
+#import "HTMLViewController.h"
 
-@implementation AboutViewController
+@implementation HTMLViewController
 
 @synthesize filename;
-
--(id)init;
-{
-  if (self = [super init]) {
-    self.filename = @"about";
-  }
-  return self;
-}
 
 -(id)initWithFile:(NSString *)name;
 {

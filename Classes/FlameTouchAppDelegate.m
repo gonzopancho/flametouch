@@ -34,7 +34,7 @@
 #import "ServiceType.h"
 #import "NSNetService+FlameExtras.h"
 #import "MGSplitViewController.h"
-#import "AboutViewController.h"
+#import "HTMLViewController.h"
 #import "TVNavigationController.h"
 #import "QuartzCore/CAAnimation.h"
 #import "TVNavigationController.h"
@@ -72,7 +72,7 @@
     [split setMasterViewController:navigationController];
     // this is a subclass of navigation controller that can have multiple 'root'
     // nodes, because the 'real' root is actually in the left pane.
-    AboutViewController *startViewController = [[[AboutViewController alloc] initWithFile:@"start"] autorelease];
+    HTMLViewController *startViewController = [[[HTMLViewController alloc] initWithFile:@"start"] autorelease];
     TVNavigationController* tv = [[[TVNavigationController alloc] initWithRootViewController:startViewController] autorelease];
     [split setDetailViewController:tv];
     self.splitViewController = split;
@@ -102,7 +102,7 @@
 -(void)displayViewController:(UIViewController*) vc asRoot:(BOOL)asRoot;
 {
   if (!vc) {
-    vc = [[[AboutViewController alloc] init] autorelease];
+    vc = [[[HTMLViewController alloc] initWithFile:@"about"] autorelease];
   }
 
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

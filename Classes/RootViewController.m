@@ -36,7 +36,7 @@
 #import "FlameTouchAppDelegate.h"
 #import "Host.h"
 #import "ServiceType.h"
-#import "AboutViewController.h"
+#import "HTMLViewController.h"
 #import "CustomTableCell.h"
 
 @implementation RootViewController
