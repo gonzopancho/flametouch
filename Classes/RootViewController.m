@@ -177,6 +177,10 @@
 	else {
 		result = [self.filteredServiceTypes count];
 	}
+  
+  if (result == 0) {
+    return 1; // the "there's nothing here!" case.
+  }
 
 	return result;
 }
@@ -188,12 +192,19 @@
     cell = [[[CustomTableCell alloc] initWithReuseIdentifier:FTNameAndDetailsCellIdentifier] autorelease];
   }
   
-	if ([self appDelegate].displayMode == SHOWSERVERS) {
+  if ([self.filteredHosts count] == 0) {
+    // haven't found anything
+    cell.textLabel.text = @"searching.."; // FIXME - trasnlate
+    cell.detailTextLabel.text = @"looking for hosts on the local network";
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    return cell;
+
+  } else if ([self appDelegate].displayMode == SHOWSERVERS) {
 		Host *host = (Host*)[self.filteredHosts objectAtIndex:indexPath.row];
 		cell.textLabel.text = [host name];
 		cell.detailTextLabel.text = [host details];
-	}
-	else {
+
+	} else {
 		ServiceType * serviceType = (ServiceType*) [self.filteredServiceTypes objectAtIndex:indexPath.row];
 		cell.textLabel.text = serviceType.humanReadableType;
 		cell.detailTextLabel.text = [serviceType details];
@@ -211,9 +222,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   // Navigation logic may go here. Create and push another view controller.
-  
   ServiceViewController * dlc = nil;
-	if ([self appDelegate].displayMode == SHOWSERVERS) {
+
+  if ([self.filteredHosts count] == 0) {
+    // haven't found anything. this isn't a tapable thing.
+    return;
+
+  } else if ([self appDelegate].displayMode == SHOWSERVERS) {
 		Host * host = (Host*)[self.filteredHosts objectAtIndex:indexPath.row];
 		dlc = [[ServiceByHostViewController alloc] initWithHost:host];
 	}
