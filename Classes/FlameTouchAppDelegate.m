@@ -89,8 +89,7 @@
   metaBrowser = [[NSNetServiceBrowser alloc] init];
   [metaBrowser setDelegate:self];
 
-  // commented out to test the 'nothing here' case - don't commit!!
-  //[metaBrowser searchForServicesOfType:@"_services._dns-sd._udp." inDomain:@""];
+  [metaBrowser searchForServicesOfType:@"_services._dns-sd._udp." inDomain:@""];
   
   // set up serviceURLs dictionary
   self.serviceURLs = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ServiceURLs" ofType:@"plist"]];
