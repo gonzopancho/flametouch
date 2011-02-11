@@ -63,25 +63,7 @@
   self.serviceTypes = [[[NSMutableArray alloc] initWithCapacity: 20] autorelease];
 
   // Configure and show the window
-  
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-    /// on ipad, we want a top-level split view, with the root navigation
-    // controller on the left, controlling the display on the right.
-    MGSplitViewController *split = [[[MGSplitViewController alloc] init] autorelease];
-    [split setShowsMasterInPortrait:YES];
-    [split setMasterViewController:navigationController];
-    // this is a subclass of navigation controller that can have multiple 'root'
-    // nodes, because the 'real' root is actually in the left pane.
-    HTMLViewController *startViewController = [[[HTMLViewController alloc] initWithFile:@"start"] autorelease];
-    TVNavigationController* tv = [[[TVNavigationController alloc] initWithRootViewController:startViewController] autorelease];
-    [split setDetailViewController:tv];
-    self.splitViewController = split;
-    [window addSubview:split.view];
-
-  } else {
-    // just use a single navigation controller on iphone
-    [window addSubview:navigationController.view];
-  }
+  [self displayMainSubview];
 
   [window makeKeyAndVisible];
   
@@ -98,6 +80,41 @@
   [self performSelector:@selector(checkWifi) withObject:nil afterDelay:8.0];
   
 	return YES; // happy days are here again
+}
+
+-(void)displayMainSubview;
+{
+
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    // on ipad, we want a top-level split view, with the root navigation
+    // controller on the left, controlling the display on the right.
+    MGSplitViewController *split = [[[MGSplitViewController alloc] init] autorelease];
+    [split setShowsMasterInPortrait:YES];
+    [split setMasterViewController:navigationController];
+    // this is a subclass of navigation controller that can have multiple 'root'
+    // nodes, because the 'real' root is actually in the left pane.
+    HTMLViewController *startViewController = [[[HTMLViewController alloc] initWithFile:@"start_ipad"] autorelease];
+    TVNavigationController* tv = [[[TVNavigationController alloc] initWithRootViewController:startViewController] autorelease];
+    [split setDetailViewController:tv];
+    self.splitViewController = split;
+    [window addSubview:split.view];
+    
+  } else {
+    // on iPhone, display a simple web view that explains what's going on.
+    // This will be replaced by the real list view just as soon as we have some results.
+    displayingExplanation = TRUE;
+
+    UIImage *image = [UIImage imageNamed:@"start_iphone.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.frame = window.frame;
+
+    [window addSubview:imageView];
+
+    [image release];
+    [imageView release];
+  }
+  
 }
 
 -(void)displayViewController:(UIViewController*) vc asRoot:(BOOL)asRoot;
@@ -281,6 +298,18 @@
   // We're now displaying at least one thing. Stop the spinner, as there's now
   // other activity to indicate that we did something.
   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
+  // on the iPhone, remove the temporary status view if we're showing it.
+  if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad && displayingExplanation) {
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.type = kCATransitionFade;
+    [window.layer addAnimation:transition forKey:nil];
+    [[window.subviews objectAtIndex:0] removeFromSuperview];
+    [window addSubview:navigationController.view];
+    displayingExplanation = FALSE;
+  }
+
 }
 
 

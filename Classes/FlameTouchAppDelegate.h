@@ -53,11 +53,14 @@
   NSMutableArray *serviceTypes;
   
   NSDictionary *serviceURLs;
+  
+  BOOL displayingExplanation;
 }
 
 - (void)refreshList;
 - (Host*) hostForService: (NSNetService*) service;
 -(void)displayViewController:(UIViewController*) vc asRoot:(BOOL)asRoot;
+-(void)displayMainSubview;
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
