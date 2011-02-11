@@ -102,17 +102,28 @@
   } else {
     // on iPhone, display a simple web view that explains what's going on.
     // This will be replaced by the real list view just as soon as we have some results.
+    // TODO - this is a little abrupt to display as soon as the app launches. It either needs
+    // to look like the spash screen (which means no text, i18n issues) or maybe only appear after a 1
+    // second delay.
     displayingExplanation = TRUE;
 
     UIImage *image = [UIImage imageNamed:@"start_iphone.png"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    [image release];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.frame = window.frame;
-
     [window addSubview:imageView];
-
-    [image release];
     [imageView release];
+
+//    UILabel *label = [[UILabel alloc] initWithFrame:window.frame];
+//    label.textAlignment = UITextAlignmentCenter;
+//    label.font = [UIFont systemFontOfSize:16];
+//    label.numberOfLines = 0;
+//    label.backgroundColor = [UIColor clearColor];
+//    label.text = @"Flame is looking for hosts on the local network. This needs wireless. Yadda yadda yadda.";
+//    [window addSubview:label];
+//    [label release];
+    
   }
   
 }
@@ -305,7 +316,10 @@
     transition.duration = 0.5;
     transition.type = kCATransitionFade;
     [window.layer addAnimation:transition forKey:nil];
-    [[window.subviews objectAtIndex:0] removeFromSuperview];
+    // remove anything we added to the window in the way of loading text.
+    for (UIView *subview in window.subviews) {
+      [subview removeFromSuperview];
+    }
     [window addSubview:navigationController.view];
     displayingExplanation = FALSE;
   }
