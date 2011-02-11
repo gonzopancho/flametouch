@@ -33,7 +33,8 @@
 
 -(id)initWithFile:(NSString *)name;
 {
-  if (self = [super init]) {
+  self = [super init];
+  if (self) {
     self.filename = name;
   }
   return self;
@@ -77,6 +78,30 @@
   [theWebView loadHTMLString: htmlString baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
 }     
 
+-(void)loadAndPushIntoViewController:(FlameTouchAppDelegate*)pushHere;
+{
+  NSLog(@"deferring load to %@", pushHere);
+  pushIntoThis = pushHere;
+  [self view]; // forces view load
+  [self retain]; // because noone else will.
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView;
+{
+  NSLog(@"Loaded web view");
+  if (pushIntoThis) {
+    NSLog(@"got a delegate - firing");
+    [pushIntoThis displayViewController:self asRoot:YES];
+    pushIntoThis = nil;
+    [self autorelease];
+  }
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error;
+{
+  NSLog(@"webview load failed!: %@", error);
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   return YES; 
@@ -92,7 +117,7 @@
 
 
 - (void)dealloc {
-  [self removeObserver:self forKeyPath:@"view.frame"];
+  //[self removeObserver:self forKeyPath:@"view.frame"];
   [theWebView setDelegate:nil];
   [theWebView release];
   [super dealloc];

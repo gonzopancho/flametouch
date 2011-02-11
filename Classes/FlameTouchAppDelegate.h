@@ -31,7 +31,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Host.h"
-#import "HTMLViewController.h"
 
 // to detect network reachability
 #import <SystemConfiguration/SystemConfiguration.h>

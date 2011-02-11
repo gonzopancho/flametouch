@@ -38,6 +38,7 @@
 #import "TVNavigationController.h"
 #import "QuartzCore/CAAnimation.h"
 #import "TVNavigationController.h"
+#import "HTMLViewController.h"
 
 // socket resolving/nasty C-level things
 #include <netinet/in.h>
@@ -131,7 +132,10 @@
 -(void)displayViewController:(UIViewController*) vc asRoot:(BOOL)asRoot;
 {
   if (!vc) {
-    vc = [[[HTMLViewController alloc] initWithFile:@"about"] autorelease];
+    NSLog(@"no view controller - assuming about controller. deferring load");
+    HTMLViewController *html = [[[HTMLViewController alloc] initWithFile:@"about"] autorelease];
+    [html loadAndPushIntoViewController:self];
+    return;
   }
 
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

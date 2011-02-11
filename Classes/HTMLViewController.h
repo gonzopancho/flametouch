@@ -30,14 +30,18 @@
 */
 
 #import <UIKit/UIKit.h>
+#import "FlameTouchAppDelegate.h"
+
 @interface HTMLViewController : UIViewController <UIWebViewDelegate> {
   IBOutlet UIWebView *theWebView;
   NSString *filename;
+  FlameTouchAppDelegate *pushIntoThis;
 }
 
 @property (nonatomic,retain) NSString *filename;
 
 -(id)initWithFile:(NSString *)name;
 -(void)loadHTML;
+-(void)loadAndPushIntoViewController:(FlameTouchAppDelegate*)pushHere;
 
 @end
